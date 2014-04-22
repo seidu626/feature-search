@@ -1,16 +1,16 @@
 feature-search
 ==============
 
-Let your users search for the features supported by your website, take the user to a feature page and highlight the feature.
+How many times you got frustrated to find a way to navigate to a feature in a website? This tiny plugin helps you to add the facility to search the list of feaures supported by your website.
 
-How many times you got frustrated to find a way to navigate to a feature in a website? This tiny plugin helps you to add feature search facility to your website.
+This lets your users search for the features supported by your website, take the user to a feature page upon selection and highlight the feature in that page.
 
 
 How to use
 ----------
 
 1. Add feature-search.js to your layout page
-2. Add the following code onready of your layout page:
+2. Add the following code in onready of your layout page:
 
 		var features = [];
 		features.push(new feature("Change your password","/settings.html",["password","change"],"changepassword"));
