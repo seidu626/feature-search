@@ -1,7 +1,7 @@
 feature-search
 ==============
 
-How many times you got frustrated to find a way to navigate to a feature in a website? This tiny plugin helps you to add the facility to search the list of feaures supported by your website.
+How many times you got frustrated to find a way to navigate to a feature in a website? This tiny script helps you to add the facility to search the list of feaures supported by your website.
 
 This lets your users search for the features supported by your website, take the user to a feature page upon selection and highlight the feature in that page.
 
