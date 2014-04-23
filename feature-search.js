@@ -41,11 +41,27 @@ var featureSearch = (function() {
                 }
             }
             if(foundMatch) {
-                
-                matches.push({ value: i, label: features[i].label });
+                var label = featuresList[i].label + "; keywords :  " + featuresList[i].keywords.join();
+                    for (var m = 0; m < terms.length; m++) {
+                        if (terms[m].length > 0) {
+                        var rx = new RegExp(terms[m], "gi");
+                        label = label.replace(rx, highlightText);
+                    }
+                } 
+                matches.push({ value: i, label: label });
             }
         }
         return matches;
+    }
+    
+    function highlightText(match) {
+        return highlight($("<span>" + match + "</span>"))[0].outerHTML;
+    }
+
+    function highlight(element)
+    {
+        element.css("background-color","#FFFFA0").css("font-weight","bold");
+        return element;
     }
     
      function addQueryString(url, queryString) {   
@@ -67,37 +83,46 @@ var featureSearch = (function() {
     
     function onFeatureSelect(item) {
         var selectedFeature = featuresList[item];
-        window.location.replace(addQueryString(selectedFeature.url, selectedFeature.elementId));
+        if(selectedFeature)
+        {
+            window.location.replace(addQueryString(selectedFeature.url, selectedFeature.elementId));
+        }
+    }
+    
+    function createAutocomplete(appendTo)
+    {
+        var element = $('<input id="autoComplete"  type="text" />');
+        $(element).autocomplete({
+            minLength: 2,
+            source: function(request, response) {
+                    response(getMatches(request));
+                },
+            close: function() {
+                    onFeatureSelect(this.value);
+                }
+        }
+        ).data("uiAutocomplete")._renderItem = function (ul, item) {
+            return $("<li></li>")
+                    .data("item.autocomplete", item)
+                    .append("<a>" + item.label + "</a>")
+                    .appendTo(ul);
+        };
+
+        $(appendTo).append(element);
+    }
+    
+    function highlightMatches()
+    {
+        var elementId = getParameterByName("highlight");
+        highlight($("#"+elementId)).focus();
     }
     
     return { 
         
         create: function (appendTo, features) {
             featuresList = features;
-            
-            var element = $('<input id="autoComplete"  type="text" />');
-            $(element).autocomplete({
-                minLength: 2,
-                source: function(request, response) {
-                        response(getMatches(request));
-                    },
-                close: function() {
-                        onFeatureSelect(this.value);
-                    }
-            }
-            ).data("uiAutocomplete")._renderItem = function (ul, item) {
-                return $("<li></li>")
-                        .data("item.autocomplete", item)
-                        .append("<a>" + item.label + "</a>")
-                        .appendTo(ul);
-            };
-            
-            $(appendTo).append(element);
-        },
-        
-        highlight: function() {
-            var elementId = getParameterByName("highlight");
-            $("#"+elementId).css("background-color","#FFFFA0").css("font-weight","bold").focus();
+            createAutocomplete(appendTo);
+            highlightMatches();
         }
     };
     
