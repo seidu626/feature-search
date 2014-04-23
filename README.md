@@ -16,7 +16,6 @@ How to use
 		features.push(new feature("Change your password","/settings.html",["password","change"],"changepassword"));
 		features.push(new feature("Find your orders","/orders.html",["orders","order list"],"orders"));
 		featureSearch.create($("#searchFeature"),features);
-		featureSearch.highlight();
 
    Here searchFeature is the id of the element to which you want the search box to be appended.
 
