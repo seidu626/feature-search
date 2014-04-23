@@ -79,10 +79,10 @@ var featureSearch = (function() {
             $(element).autocomplete({
                 minLength: 2,
                 source: function(request, response) {
-                        response(getMatches(request)) 
+                        response(getMatches(request));
                     },
                 close: function() {
-                        onFeatureSelect(this.value)
+                        onFeatureSelect(this.value);
                     }
             }
             ).data("uiAutocomplete")._renderItem = function (ul, item) {
@@ -97,9 +97,8 @@ var featureSearch = (function() {
         
         highlight: function() {
             var elementId = getParameterByName("highlight");
-            $("#"+elementId).css("background-color","#FFFFA0");
+            $("#"+elementId).css("background-color","#FFFFA0").css("font-weight","bold").focus();
         }
-        
     };
     
 })();
