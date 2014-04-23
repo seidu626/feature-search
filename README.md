@@ -37,4 +37,4 @@ Dependencies
 2. jquery-ui
 
 Check out the following if you need more info
-http://www.codeproject.com/Articles/763580/Website-Features-Search
+http://www.codeproject.com/Tips/763580/Website-Features-Search
