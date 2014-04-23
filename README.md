@@ -20,11 +20,14 @@ How to use
 
    Here searchFeature is the id of the element to which you want the search box to be appended.
 
-   The feature takes four params
-   	1. Label  
-   	2. Url
-   	3. Keywords to match
-   	4. Id of the element in the page rendered by the Url
+The feature takes four arguments
+
+ 1. Label/Title of the feature
+ 2. Url - This can be either url of the page where the link to feature is located or the actual url of the feature. For example, for change password feature, you can either give the url of the page where the link to "Change Password" is located or you can directly give the url of the page where the change password form is located.
+ 3. Keywords to match when the user search
+ 4. Id of the element in the page rendered by the Url. This is used for highlighting it.
+ 
+That's it, now you should see an autocomplete search box which lets the user to search the list of features. The matching features are displayed in a drop down with matching parts highlighted, and when the user select one of the options, the user will be redirect to the page where the feature is located and highlights the text in that page.    
 
 note: The script searches for the search-term in both the label as well as keywords
 
@@ -32,3 +35,6 @@ Dependencies
 ------------
 1. jquery
 2. jquery-ui
+
+Check out the following if you need more info
+http://www.codeproject.com/script/Articles/ArticleVersion.aspx?waid=123415&aid=763537
